@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141c2e"/>
+      <stop offset="50%" stop-color="#0a0e18"/>
+      <stop offset="100%" stop-color="#05070c"/>
+    </linearGradient>
+    <linearGradient id="rimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff"/>
+      <stop offset="50%" stop-color="#7000ff"/>
+      <stop offset="100%" stop-color="#ffb800"/>
+    </linearGradient>
+    <linearGradient id="runnerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00f0ff"/>
+      <stop offset="60%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#ffb800"/>
+    </linearGradient>
+    <linearGradient id="streakGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f0ff" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#00f0ff" stop-opacity="0.85"/>
+    </linearGradient>
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Base Rounded Squircle -->
+  <rect x="16" y="16" width="480" height="480" rx="108" fill="url(#bgGrad)"/>
+  
+  <!-- Outer Neon Rim -->
+  <rect x="16" y="16" width="480" height="480" rx="108" fill="none" stroke="url(#rimGrad)" stroke-width="12" filter="url(#neonGlow)"/>
+
+  <!-- Stopwatch / Orbit Dial Arc -->
+  <circle cx="256" cy="256" r="195" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="6"/>
+  <path d="M 120 120 A 195 195 0 0 1 420 180" fill="none" stroke="url(#runnerGrad)" stroke-width="8" stroke-linecap="round" filter="url(#neonGlow)"/>
+
+  <!-- Speed Motion Trails -->
+  <path d="M 90 230 L 220 230" stroke="url(#streakGrad)" stroke-width="5" stroke-linecap="round" opacity="0.7"/>
+  <path d="M 60 270 L 210 270" stroke="url(#streakGrad)" stroke-width="7" stroke-linecap="round" opacity="0.9"/>
+  <path d="M 110 310 L 250 310" stroke="url(#streakGrad)" stroke-width="5" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- Dynamic Athletic Runner Silhouette -->
+  <g filter="url(#neonGlow)">
+    <!-- Head -->
+    <circle cx="345" cy="155" r="28" fill="url(#runnerGrad)"/>
+    
+    <!-- Torso and Limbs Path -->
+    <path d="M 330 190
+             C 320 205, 305 225, 290 250
+             L 265 295
+             L 245 350
+             C 240 365, 225 385, 205 405
+             C 195 415, 185 410, 190 395
+             L 225 320
+             L 255 255
+             C 265 235, 275 220, 290 205
+             Z" fill="url(#runnerGrad)"/>
+
+    <!-- Front Leg Driving Forward -->
+    <path d="M 285 260
+             L 345 305
+             C 365 320, 385 330, 410 335
+             C 420 337, 420 348, 405 348
+             C 375 348, 345 330, 325 310
+             L 270 275
+             Z" fill="url(#runnerGrad)"/>
+
+    <!-- Back Arm Pumping Backward -->
+    <path d="M 298 208
+             L 240 240
+             C 225 248, 205 258, 185 262
+             C 175 264, 172 254, 182 248
+             C 205 235, 230 220, 255 200
+             Z" fill="url(#runnerGrad)"/>
+
+    <!-- Front Arm Driving Forward -->
+    <path d="M 320 205
+             L 370 225
+             C 388 232, 400 240, 410 252
+             C 416 260, 408 266, 400 260
+             C 385 248, 370 238, 350 228
+             L 310 215
+             Z" fill="url(#runnerGrad)"/>
+  </g>
+
+  <!-- SUB 4 Micro Badge -->
+  <g transform="translate(196, 432)">
+    <rect x="0" y="0" width="120" height="34" rx="17" fill="rgba(0,0,0,0.7)" stroke="#ffb800" stroke-width="2.5"/>
+    <text x="60" y="23" font-family="'JetBrains Mono', monospace, sans-serif" font-size="17" font-weight="900" fill="#ffb800" text-anchor="middle" letter-spacing="2">SUB 4</text>
+  </g>
+</svg>
