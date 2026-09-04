@@ -134,9 +134,9 @@
             display: inline-flex;
             align-items: center;
             gap: 5px;
-            padding: 4px 10px;
+            padding: 3px 9px;
             border-radius: 20px;
-            font-size: 0.78rem;
+            font-size: 0.74rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
@@ -440,7 +440,7 @@
             background: rgba(0, 0, 0, 0.4);
         }
         .workout-box.completed {
-            opacity: 0.85;
+            opacity: 0.88;
             background: rgba(0, 230, 118, 0.04);
             border-color: rgba(0, 230, 118, 0.25);
         }
@@ -450,12 +450,13 @@
             border-color: rgba(255, 255, 255, 0.03);
         }
 
+        /* ROBUST FLEX LAYOUT TO PREVENT OVERLAPS */
         .day-summary-row {
-            padding: 14px 16px;
-            display: grid;
-            grid-template-columns: 130px 1fr auto;
+            padding: 14px 18px;
+            display: flex;
             align-items: center;
-            gap: 14px;
+            justify-content: space-between;
+            gap: 16px;
             cursor: pointer;
             user-select: none;
         }
@@ -463,7 +464,10 @@
         .day-meta-col {
             display: flex;
             flex-direction: column;
-            gap: 2px;
+            align-items: flex-start;
+            gap: 4px;
+            width: 140px;
+            flex-shrink: 0;
         }
         .day-name {
             font-weight: 700;
@@ -474,6 +478,14 @@
             font-size: 0.72rem;
             color: var(--text-dim);
             font-family: 'JetBrains Mono', monospace;
+        }
+        .day-meta-col .badge {
+            margin-top: 2px;
+        }
+
+        .day-content-col {
+            flex: 1;
+            min-width: 0;
         }
         .day-content-col h4 {
             font-size: 0.95rem;
@@ -502,6 +514,13 @@
             line-height: 1.3;
         }
 
+        .day-actions-col {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
         .expand-btn {
             background: rgba(255, 255, 255, 0.06);
             border: 1px solid rgba(255, 255, 255, 0.12);
@@ -527,7 +546,7 @@
             display: flex;
             align-items: center;
             cursor: pointer;
-            padding: 4px;
+            padding: 2px;
         }
         .custom-check {
             width: 26px;
@@ -550,7 +569,7 @@
 
         .workout-drawer {
             display: none;
-            padding: 14px 16px;
+            padding: 14px 18px;
             border-top: 1px solid rgba(255, 255, 255, 0.06);
             background: rgba(10, 15, 26, 0.85);
             animation: drawerFade 0.2s ease-in-out;
@@ -800,6 +819,7 @@
             color: var(--accent-cyan);
         }
 
+        /* RESPONSIVE BREAKPOINTS */
         @media (max-width: 768px) {
             .container {
                 padding: 12px 10px 60px;
@@ -864,24 +884,25 @@
                 gap: 14px;
             }
 
+            /* MOBILE LAYOUT FOR WORKOUT ROW */
             .day-summary-row {
-                display: flex;
                 flex-direction: column;
                 align-items: stretch;
-                gap: 10px;
+                gap: 8px;
                 padding: 12px;
             }
-            .mobile-header-row {
-                display: flex;
+            .day-meta-col {
+                width: 100%;
+                flex-direction: row;
                 justify-content: space-between;
                 align-items: center;
-                width: 100%;
             }
-            .mobile-actions-row {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
+            .day-meta-col .badge {
+                margin-top: 0;
+            }
+            .day-actions-col {
                 width: 100%;
+                justify-content: space-between;
                 margin-top: 4px;
                 padding-top: 8px;
                 border-top: 1px solid rgba(255, 255, 255, 0.05);
@@ -1143,11 +1164,9 @@
                     <!-- W1D1 -->
                     <div class="workout-box completed" id="row-w1d1">
                         <div class="day-summary-row" onclick="toggleDrawer('w1d1')">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name">Wednesday</span>
-                                    <span class="day-date">02.09.2026</span>
-                                </div>
+                            <div class="day-meta-col">
+                                <span class="day-name">Wednesday</span>
+                                <span class="day-date">02.09.2026</span>
                                 <span class="badge badge-cyan">Quality Run</span>
                             </div>
                             <div class="day-content-col">
@@ -1155,7 +1174,7 @@
                                 <p class="day-desc">Completed with avg HR 150 bpm. Solid cardiovascular efficiency baseline established.</p>
                                 <span class="stacked-badge">🧘 Stacked: 15 min Hip & Hamstring Mobility</span>
                             </div>
-                            <div class="mobile-actions-row">
+                            <div class="day-actions-col">
                                 <div class="expand-btn" id="btn-exp-w1d1">Details ▼</div>
                                 <div class="check-container" onclick="event.stopPropagation(); toggleCheck('w1d1')">
                                     <div class="custom-check checked" id="chk-w1d1">✓</div>
@@ -1197,11 +1216,9 @@
                     <!-- W1D2 -->
                     <div class="workout-box completed" id="row-w1d2">
                         <div class="day-summary-row" onclick="toggleDrawer('w1d2')">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name">Friday</span>
-                                    <span class="day-date">04.09.2026</span>
-                                </div>
+                            <div class="day-meta-col">
+                                <span class="day-name">Friday</span>
+                                <span class="day-date">04.09.2026</span>
                                 <span class="badge badge-gold">Intervals</span>
                             </div>
                             <div class="day-content-col">
@@ -1209,7 +1226,7 @@
                                 <p class="day-desc">Splits: 5:09 → 5:11 → 5:04 → <strong>4:55/km</strong>! Avg HR 155 bpm, max 167 bpm. Perfect negative split execution.</p>
                                 <span class="stacked-badge">🏋️ Stacked: Strength Circuit A (20 min)</span>
                             </div>
-                            <div class="mobile-actions-row">
+                            <div class="day-actions-col">
                                 <div class="expand-btn" id="btn-exp-w1d2">Details ▼</div>
                                 <div class="check-container" onclick="event.stopPropagation(); toggleCheck('w1d2')">
                                     <div class="custom-check checked" id="chk-w1d2">✓</div>
@@ -1254,19 +1271,17 @@
                     <!-- W1D3 -->
                     <div class="workout-box" id="row-w1d3">
                         <div class="day-summary-row" onclick="toggleDrawer('w1d3')">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name">Sunday</span>
-                                    <span class="day-date">06.09.2026</span>
-                                </div>
-                                <span class="badge badge-purple">Upcoming Long Run</span>
+                            <div class="day-meta-col">
+                                <span class="day-name">Sunday</span>
+                                <span class="day-date">06.09.2026</span>
+                                <span class="badge badge-purple">Long Run</span>
                             </div>
                             <div class="day-content-col">
                                 <h4>🚀 Progressive Long Run: 18.0 km @ 5:50 - 6:05/km</h4>
                                 <p class="day-desc">Steady aerobic Zone 2 effort (HR < 148 bpm). Practice drinking water every 5 km and 1 energy gel at 10 km.</p>
                                 <span class="stacked-badge">🧘 Stacked: 15 min Couch Stretch & Foam Rolling</span>
                             </div>
-                            <div class="mobile-actions-row">
+                            <div class="day-actions-col">
                                 <div class="expand-btn" id="btn-exp-w1d3">Details ▼</div>
                                 <div class="check-container" onclick="event.stopPropagation(); toggleCheck('w1d3')">
                                     <div class="custom-check" id="chk-w1d3"></div>
@@ -1308,11 +1323,9 @@
                     <!-- Rest days -->
                     <div class="workout-box rest-box">
                         <div class="day-summary-row" style="cursor: default;">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name" style="color: var(--text-muted);">Mon, Tue, Thu, Sat</span>
-                                    <span class="day-date">Recovery</span>
-                                </div>
+                            <div class="day-meta-col">
+                                <span class="day-name" style="color: var(--text-muted);">Mon, Tue, Thu, Sat</span>
+                                <span class="day-date">Recovery</span>
                                 <span class="badge" style="background: rgba(255,255,255,0.05); color: var(--text-dim);">Rest Days</span>
                             </div>
                             <div class="day-content-col">
@@ -1344,11 +1357,9 @@
                     <!-- W2D1 -->
                     <div class="workout-box" id="row-w2d1">
                         <div class="day-summary-row" onclick="toggleDrawer('w2d1')">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name">Tuesday</span>
-                                    <span class="day-date">08.09.2026</span>
-                                </div>
+                            <div class="day-meta-col">
+                                <span class="day-name">Tuesday</span>
+                                <span class="day-date">08.09.2026</span>
                                 <span class="badge badge-cyan">MP Tempo</span>
                             </div>
                             <div class="day-content-col">
@@ -1356,7 +1367,7 @@
                                 <p class="day-desc">Lock into smooth rhythm at exactly target race pace. Cadence goal: 160-164 spm.</p>
                                 <span class="stacked-badge">🏋️ Stacked: Strength Circuit B (20 min)</span>
                             </div>
-                            <div class="mobile-actions-row">
+                            <div class="day-actions-col">
                                 <div class="expand-btn" id="btn-exp-w2d1">Details ▼</div>
                                 <div class="check-container" onclick="event.stopPropagation(); toggleCheck('w2d1')">
                                     <div class="custom-check" id="chk-w2d1"></div>
@@ -1396,11 +1407,9 @@
                     <!-- W2D2 -->
                     <div class="workout-box" id="row-w2d2">
                         <div class="day-summary-row" onclick="toggleDrawer('w2d2')">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name">Thursday</span>
-                                    <span class="day-date">10.09.2026</span>
-                                </div>
+                            <div class="day-meta-col">
+                                <span class="day-name">Thursday</span>
+                                <span class="day-date">10.09.2026</span>
                                 <span class="badge badge-emerald">Aerobic Flush</span>
                             </div>
                             <div class="day-content-col">
@@ -1408,7 +1417,7 @@
                                 <p class="day-desc">Keep heart rate strictly under 145 bpm. Finish with 4 relaxed strides.</p>
                                 <span class="stacked-badge">🧘 Stacked: 12 min Thoracic & Hamstring Mobility</span>
                             </div>
-                            <div class="mobile-actions-row">
+                            <div class="day-actions-col">
                                 <div class="expand-btn" id="btn-exp-w2d2">Details ▼</div>
                                 <div class="check-container" onclick="event.stopPropagation(); toggleCheck('w2d2')">
                                     <div class="custom-check" id="chk-w2d2"></div>
@@ -1444,11 +1453,9 @@
                     <!-- W2D3 -->
                     <div class="workout-box" id="row-w2d3">
                         <div class="day-summary-row" onclick="toggleDrawer('w2d3')">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name">Sunday</span>
-                                    <span class="day-date">13.09.2026</span>
-                                </div>
+                            <div class="day-meta-col">
+                                <span class="day-name">Sunday</span>
+                                <span class="day-date">13.09.2026</span>
                                 <span class="badge badge-purple">Long Run</span>
                             </div>
                             <div class="day-content-col">
@@ -1456,7 +1463,7 @@
                                 <p class="day-desc">Run first 18km very relaxed, then accelerate final 5km to Marathon Pace on tired legs. Practice dual-gel strategy.</p>
                                 <span class="stacked-badge">🧘 Stacked: Deep Recovery Protocol</span>
                             </div>
-                            <div class="mobile-actions-row">
+                            <div class="day-actions-col">
                                 <div class="expand-btn" id="btn-exp-w2d3">Details ▼</div>
                                 <div class="check-container" onclick="event.stopPropagation(); toggleCheck('w2d3')">
                                     <div class="custom-check" id="chk-w2d3"></div>
@@ -1495,11 +1502,9 @@
                     <!-- Rest days -->
                     <div class="workout-box rest-box">
                         <div class="day-summary-row" style="cursor: default;">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name" style="color: var(--text-muted);">Mon, Wed, Fri, Sat</span>
-                                    <span class="day-date">Recovery</span>
-                                </div>
+                            <div class="day-meta-col">
+                                <span class="day-name" style="color: var(--text-muted);">Mon, Wed, Fri, Sat</span>
+                                <span class="day-date">Recovery</span>
                                 <span class="badge" style="background: rgba(255,255,255,0.05); color: var(--text-dim);">Rest Days</span>
                             </div>
                             <div class="day-content-col">
@@ -1529,11 +1534,9 @@
                     <!-- W3D1 -->
                     <div class="workout-box" id="row-w3d1">
                         <div class="day-summary-row" onclick="toggleDrawer('w3d1')">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name">Tuesday</span>
-                                    <span class="day-date">15.09.2026</span>
-                                </div>
+                            <div class="day-meta-col">
+                                <span class="day-name">Tuesday</span>
+                                <span class="day-date">15.09.2026</span>
                                 <span class="badge badge-gold">VO2 Max</span>
                             </div>
                             <div class="day-content-col">
@@ -1541,7 +1544,7 @@
                                 <p class="day-desc">Fast turnover workout to make 5:35/km marathon pace feel effortless.</p>
                                 <span class="stacked-badge">🏋️ Stacked: Strength Circuit A (20 min)</span>
                             </div>
-                            <div class="mobile-actions-row">
+                            <div class="day-actions-col">
                                 <div class="expand-btn" id="btn-exp-w3d1">Details ▼</div>
                                 <div class="check-container" onclick="event.stopPropagation(); toggleCheck('w3d1')">
                                     <div class="custom-check" id="chk-w3d1"></div>
@@ -1579,11 +1582,9 @@
                     <!-- W3D2 -->
                     <div class="workout-box" id="row-w3d2">
                         <div class="day-summary-row" onclick="toggleDrawer('w3d2')">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name">Thursday</span>
-                                    <span class="day-date">17.09.2026</span>
-                                </div>
+                            <div class="day-meta-col">
+                                <span class="day-name">Thursday</span>
+                                <span class="day-date">17.09.2026</span>
                                 <span class="badge badge-emerald">Aerobic Base</span>
                             </div>
                             <div class="day-content-col">
@@ -1591,7 +1592,7 @@
                                 <p class="day-desc">Comfortable aerobic volume, focusing on upright posture and relaxed shoulders.</p>
                                 <span class="stacked-badge">🧘 Stacked: 15 min Hip Flow</span>
                             </div>
-                            <div class="mobile-actions-row">
+                            <div class="day-actions-col">
                                 <div class="expand-btn" id="btn-exp-w3d2">Details ▼</div>
                                 <div class="check-container" onclick="event.stopPropagation(); toggleCheck('w3d2')">
                                     <div class="custom-check" id="chk-w3d2"></div>
@@ -1627,11 +1628,9 @@
                     <!-- W3D3 -->
                     <div class="workout-box" id="row-w3d3">
                         <div class="day-summary-row" onclick="toggleDrawer('w3d3')">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name">Sunday</span>
-                                    <span class="day-date">20.09.2026</span>
-                                </div>
+                            <div class="day-meta-col">
+                                <span class="day-name">Sunday</span>
+                                <span class="day-date">20.09.2026</span>
                                 <span class="badge badge-purple">Long Run</span>
                             </div>
                             <div class="day-content-col">
@@ -1639,7 +1638,7 @@
                                 <p class="day-desc">Simulate race day conditions! Take gels at 7 km, 14 km, 21 km. Push the final 8 km at crisp 5:35/km.</p>
                                 <span class="stacked-badge">🧘 Stacked: Deep Recovery & Stretch</span>
                             </div>
-                            <div class="mobile-actions-row">
+                            <div class="day-actions-col">
                                 <div class="expand-btn" id="btn-exp-w3d3">Details ▼</div>
                                 <div class="check-container" onclick="event.stopPropagation(); toggleCheck('w3d3')">
                                     <div class="custom-check" id="chk-w3d3"></div>
@@ -1679,11 +1678,9 @@
                     <!-- Rest days -->
                     <div class="workout-box rest-box">
                         <div class="day-summary-row" style="cursor: default;">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name" style="color: var(--text-muted);">Mon, Wed, Fri, Sat</span>
-                                    <span class="day-date">Recovery</span>
-                                </div>
+                            <div class="day-meta-col">
+                                <span class="day-name" style="color: var(--text-muted);">Mon, Wed, Fri, Sat</span>
+                                <span class="day-date">Recovery</span>
                                 <span class="badge" style="background: rgba(255,255,255,0.05); color: var(--text-dim);">Rest Days</span>
                             </div>
                             <div class="day-content-col">
@@ -1713,11 +1710,9 @@
                     <!-- W4D1 -->
                     <div class="workout-box" id="row-w4d1">
                         <div class="day-summary-row" onclick="toggleDrawer('w4d1')">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name">Tuesday</span>
-                                    <span class="day-date">22.09.2026</span>
-                                </div>
+                            <div class="day-meta-col">
+                                <span class="day-name">Tuesday</span>
+                                <span class="day-date">22.09.2026</span>
                                 <span class="badge badge-cyan">MP Block</span>
                             </div>
                             <div class="day-content-col">
@@ -1725,7 +1720,7 @@
                                 <p class="day-desc">The biggest mid-week quality workout. Run relaxed, rhythmic, and perfectly paced.</p>
                                 <span class="stacked-badge">🏋️ Stacked: Strength Circuit B (15 min)</span>
                             </div>
-                            <div class="mobile-actions-row">
+                            <div class="day-actions-col">
                                 <div class="expand-btn" id="btn-exp-w4d1">Details ▼</div>
                                 <div class="check-container" onclick="event.stopPropagation(); toggleCheck('w4d1')">
                                     <div class="custom-check" id="chk-w4d1"></div>
@@ -1763,11 +1758,9 @@
                     <!-- W4D2 -->
                     <div class="workout-box" id="row-w4d2">
                         <div class="day-summary-row" onclick="toggleDrawer('w4d2')">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name">Thursday</span>
-                                    <span class="day-date">24.09.2026</span>
-                                </div>
+                            <div class="day-meta-col">
+                                <span class="day-name">Thursday</span>
+                                <span class="day-date">24.09.2026</span>
                                 <span class="badge badge-emerald">Easy Run</span>
                             </div>
                             <div class="day-content-col">
@@ -1775,7 +1768,7 @@
                                 <p class="day-desc">Keep legs fresh and relaxed ahead of the 30k weekend long run.</p>
                                 <span class="stacked-badge">🧘 Stacked: 15 min Hip Mobility</span>
                             </div>
-                            <div class="mobile-actions-row">
+                            <div class="day-actions-col">
                                 <div class="expand-btn" id="btn-exp-w4d2">Details ▼</div>
                                 <div class="check-container" onclick="event.stopPropagation(); toggleCheck('w4d2')">
                                     <div class="custom-check" id="chk-w4d2"></div>
@@ -1810,19 +1803,17 @@
                     <!-- W4D3 -->
                     <div class="workout-box" id="row-w4d3">
                         <div class="day-summary-row" onclick="toggleDrawer('w4d3')">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name">Sunday</span>
-                                    <span class="day-date">27.09.2026</span>
-                                </div>
-                                <span class="badge badge-purple">Peak Long Run</span>
+                            <div class="day-meta-col">
+                                <span class="day-name">Sunday</span>
+                                <span class="day-date">27.09.2026</span>
+                                <span class="badge badge-purple">30k Peak Long</span>
                             </div>
                             <div class="day-content-col">
                                 <h4>🏅 Peak Dress Rehearsal: 30.0 km (22k Easy + 8k MP)</h4>
                                 <p class="day-desc">Wear your race gear! Practice exact morning breakfast and full gel schedule (at km 7, 14, 21, 28). Locks in Sub-4 capability.</p>
                                 <span class="stacked-badge">🧘 Stacked: 20 min Full Recovery</span>
                             </div>
-                            <div class="mobile-actions-row">
+                            <div class="day-actions-col">
                                 <div class="expand-btn" id="btn-exp-w4d3">Details ▼</div>
                                 <div class="check-container" onclick="event.stopPropagation(); toggleCheck('w4d3')">
                                     <div class="custom-check" id="chk-w4d3"></div>
@@ -1864,11 +1855,9 @@
                     <!-- Rest days -->
                     <div class="workout-box rest-box">
                         <div class="day-summary-row" style="cursor: default;">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name" style="color: var(--text-muted);">Mon, Wed, Fri, Sat</span>
-                                    <span class="day-date">Recovery</span>
-                                </div>
+                            <div class="day-meta-col">
+                                <span class="day-name" style="color: var(--text-muted);">Mon, Wed, Fri, Sat</span>
+                                <span class="day-date">Recovery</span>
                                 <span class="badge" style="background: rgba(255,255,255,0.05); color: var(--text-dim);">Rest Days</span>
                             </div>
                             <div class="day-content-col">
@@ -1898,11 +1887,9 @@
                     <!-- W5D1 -->
                     <div class="workout-box" id="row-w5d1">
                         <div class="day-summary-row" onclick="toggleDrawer('w5d1')">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name">Tuesday</span>
-                                    <span class="day-date">29.09.2026</span>
-                                </div>
+                            <div class="day-meta-col">
+                                <span class="day-name">Tuesday</span>
+                                <span class="day-date">29.09.2026</span>
                                 <span class="badge badge-gold">Sharpening</span>
                             </div>
                             <div class="day-content-col">
@@ -1910,7 +1897,7 @@
                                 <p class="day-desc">Crisp, controlled pace. Do not go all out; focus on snappy stride mechanics.</p>
                                 <span class="stacked-badge">🏋️ Stacked: Light Maintenance (10 min)</span>
                             </div>
-                            <div class="mobile-actions-row">
+                            <div class="day-actions-col">
                                 <div class="expand-btn" id="btn-exp-w5d1">Details ▼</div>
                                 <div class="check-container" onclick="event.stopPropagation(); toggleCheck('w5d1')">
                                     <div class="custom-check" id="chk-w5d1"></div>
@@ -1947,11 +1934,9 @@
                     <!-- W5D2 -->
                     <div class="workout-box" id="row-w5d2">
                         <div class="day-summary-row" onclick="toggleDrawer('w5d2')">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name">Thursday</span>
-                                    <span class="day-date">01.10.2026</span>
-                                </div>
+                            <div class="day-meta-col">
+                                <span class="day-name">Thursday</span>
+                                <span class="day-date">01.10.2026</span>
                                 <span class="badge badge-emerald">Easy Run</span>
                             </div>
                             <div class="day-content-col">
@@ -1959,7 +1944,7 @@
                                 <p class="day-desc">Effortless cruising. Shake out tension and feel spring in your step.</p>
                                 <span class="stacked-badge">🧘 Stacked: 12 min Gentle Mobility</span>
                             </div>
-                            <div class="mobile-actions-row">
+                            <div class="day-actions-col">
                                 <div class="expand-btn" id="btn-exp-w5d2">Details ▼</div>
                                 <div class="check-container" onclick="event.stopPropagation(); toggleCheck('w5d2')">
                                     <div class="custom-check" id="chk-w5d2"></div>
@@ -1994,11 +1979,9 @@
                     <!-- W5D3 -->
                     <div class="workout-box" id="row-w5d3">
                         <div class="day-summary-row" onclick="toggleDrawer('w5d3')">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name">Sunday</span>
-                                    <span class="day-date">04.10.2026</span>
-                                </div>
+                            <div class="day-meta-col">
+                                <span class="day-name">Sunday</span>
+                                <span class="day-date">04.10.2026</span>
                                 <span class="badge badge-purple">Taper Long</span>
                             </div>
                             <div class="day-content-col">
@@ -2006,7 +1989,7 @@
                                 <p class="day-desc">Comfortable, confidence-boosting run. You should finish feeling fresh and ready to keep going.</p>
                                 <span class="stacked-badge">🧘 Stacked: 15 min Mobility</span>
                             </div>
-                            <div class="mobile-actions-row">
+                            <div class="day-actions-col">
                                 <div class="expand-btn" id="btn-exp-w5d3">Details ▼</div>
                                 <div class="check-container" onclick="event.stopPropagation(); toggleCheck('w5d3')">
                                     <div class="custom-check" id="chk-w5d3"></div>
@@ -2042,11 +2025,9 @@
                     <!-- Rest days -->
                     <div class="workout-box rest-box">
                         <div class="day-summary-row" style="cursor: default;">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name" style="color: var(--text-muted);">Mon, Wed, Fri, Sat</span>
-                                    <span class="day-date">Recovery</span>
-                                </div>
+                            <div class="day-meta-col">
+                                <span class="day-name" style="color: var(--text-muted);">Mon, Wed, Fri, Sat</span>
+                                <span class="day-date">Recovery</span>
                                 <span class="badge" style="background: rgba(255,255,255,0.05); color: var(--text-dim);">Rest Days</span>
                             </div>
                             <div class="day-content-col">
@@ -2076,11 +2057,9 @@
                     <!-- W6D1 -->
                     <div class="workout-box" id="row-w6d1">
                         <div class="day-summary-row" onclick="toggleDrawer('w6d1')">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name">Tuesday</span>
-                                    <span class="day-date">06.10.2026</span>
-                                </div>
+                            <div class="day-meta-col">
+                                <span class="day-name">Tuesday</span>
+                                <span class="day-date">06.10.2026</span>
                                 <span class="badge badge-cyan">Tune-up</span>
                             </div>
                             <div class="day-content-col">
@@ -2088,7 +2067,7 @@
                                 <p class="day-desc">Just enough to activate neuromuscular pathways. No heavy strength work this week.</p>
                                 <span class="stacked-badge">🧘 Stacked: 10 min Gentle Stretching</span>
                             </div>
-                            <div class="mobile-actions-row">
+                            <div class="day-actions-col">
                                 <div class="expand-btn" id="btn-exp-w6d1">Details ▼</div>
                                 <div class="check-container" onclick="event.stopPropagation(); toggleCheck('w6d1')">
                                     <div class="custom-check" id="chk-w6d1"></div>
@@ -2124,11 +2103,9 @@
                     <!-- W6D2 -->
                     <div class="workout-box" id="row-w6d2">
                         <div class="day-summary-row" onclick="toggleDrawer('w6d2')">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name">Thursday</span>
-                                    <span class="day-date">08.10.2026</span>
-                                </div>
+                            <div class="day-meta-col">
+                                <span class="day-name">Thursday</span>
+                                <span class="day-date">08.10.2026</span>
                                 <span class="badge badge-emerald">Shakeout</span>
                             </div>
                             <div class="day-content-col">
@@ -2136,7 +2113,7 @@
                                 <p class="day-desc">Very relaxed jog to keep muscles loose. Begin 3-day high-carb loading today (8-10g carbs/kg)!</p>
                                 <span class="stacked-badge">🧘 Stacked: 10 min Dynamic mobility</span>
                             </div>
-                            <div class="mobile-actions-row">
+                            <div class="day-actions-col">
                                 <div class="expand-btn" id="btn-exp-w6d2">Details ▼</div>
                                 <div class="check-container" onclick="event.stopPropagation(); toggleCheck('w6d2')">
                                     <div class="custom-check" id="chk-w6d2"></div>
@@ -2170,11 +2147,9 @@
                     <!-- W6D3 - RACE DAY -->
                     <div class="workout-box" style="background: rgba(255, 184, 0, 0.08); border-color: rgba(255, 184, 0, 0.4);" id="row-w6d3">
                         <div class="day-summary-row" onclick="toggleDrawer('w6d3')">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name" style="color: var(--accent-gold); font-size: 1.05rem;">SUNDAY</span>
-                                    <span class="day-date" style="color: #fff; font-weight: 700;">11.10.2026</span>
-                                </div>
+                            <div class="day-meta-col">
+                                <span class="day-name" style="color: var(--accent-gold); font-size: 1.05rem;">SUNDAY</span>
+                                <span class="day-date" style="color: #fff; font-weight: 700;">11.10.2026</span>
                                 <span class="badge badge-gold">RACE DAY</span>
                             </div>
                             <div class="day-content-col">
@@ -2182,7 +2157,7 @@
                                 <p class="day-desc" style="color: #fff;"><strong>Target: 3:55:00 - 3:58:00 (Pace: 5:35/km)</strong>. Start at Olympic Park, cross English Garden, Marienplatz, and finish in the Olympic Stadium!</p>
                                 <span class="stacked-badge" style="background: rgba(255, 184, 0, 0.2); color: var(--accent-gold); border-color: var(--accent-gold);">⚡ Execute exact pacing & gel schedule every 7 km</span>
                             </div>
-                            <div class="mobile-actions-row">
+                            <div class="day-actions-col">
                                 <div class="expand-btn" id="btn-exp-w6d3" style="border-color: var(--accent-gold); color: var(--accent-gold);">Details ▼</div>
                                 <div class="check-container" onclick="event.stopPropagation(); toggleCheck('w6d3')">
                                     <div class="custom-check" id="chk-w6d3"></div>
@@ -2228,11 +2203,9 @@
                     <!-- Rest days -->
                     <div class="workout-box rest-box">
                         <div class="day-summary-row" style="cursor: default;">
-                            <div class="mobile-header-row">
-                                <div class="day-meta-col">
-                                    <span class="day-name" style="color: var(--text-muted);">Mon, Wed, Fri, Sat</span>
-                                    <span class="day-date">Rest & Carbs</span>
-                                </div>
+                            <div class="day-meta-col">
+                                <span class="day-name" style="color: var(--text-muted);">Mon, Wed, Fri, Sat</span>
+                                <span class="day-date">Rest & Carbs</span>
                                 <span class="badge" style="background: rgba(255,255,255,0.05); color: var(--text-dim);">Rest Days</span>
                             </div>
                             <div class="day-content-col">
