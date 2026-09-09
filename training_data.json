@@ -1,18 +1,19 @@
 {
   "kpis": {
-    "total_runs": 81,
-    "total_running_km": 700.6,
+    "total_runs": 82,
+    "total_running_km": 710.8,
     "longest_run_all_time": 42.51,
     "longest_run_2026": 18.02,
     "fastest_5k_pace": "4:50/km",
     "fastest_10k_pace": "5:06/km",
     "recent_interval_pace": "4x 1.5k @ 5:04/km (final 4:55/km)",
+    "recent_tempo_pace": "7k MP @ 5:21/km (HR 153 bpm)",
     "recent_long_run": "18.02 km @ 5:52/km (Lap 2: 4k @ 5:35/km)",
     "target_marathon_pace": "5:34 - 5:38/km",
     "target_time": "3:55:00 - 3:58:00 (< 4h)",
     "race_date": "2026-10-11",
     "race_name": "Generali M\u00fcnchen Marathon 2026",
-    "days_to_race": 35
+    "days_to_race": 32
   },
   "activities": [
     {
@@ -1229,6 +1230,21 @@
       "cadence": 158,
       "elevation_m": 22,
       "calories": 1744
+    },
+    {
+      "id": "480223464473526473",
+      "date": "2026-09-09",
+      "datetime": "2026-09-09 15:36",
+      "timestamp": 1788968217,
+      "distance_km": 10.23,
+      "duration_min": 56.5,
+      "pace_str": "5:31/km",
+      "pace_min_km": 5.52,
+      "avg_hr": 151,
+      "max_hr": 165,
+      "cadence": 160,
+      "elevation_m": 29,
+      "calories": 903
     }
   ],
   "cross_training": [
@@ -1460,10 +1476,10 @@
     },
     {
       "month": "2026-09",
-      "total_km": 37.3,
-      "runs": 3,
-      "avg_hr": 155.7,
-      "avg_pace": 5.55
+      "total_km": 47.5,
+      "runs": 4,
+      "avg_hr": 154.5,
+      "avg_pace": 5.54
     }
   ]
 }
