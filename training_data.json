@@ -1,20 +1,20 @@
 {
   "kpis": {
-    "total_runs": 88,
-    "total_running_km": 791.7,
+    "total_runs": 89,
+    "total_running_km": 821.7,
     "longest_run_all_time": 42.51,
-    "longest_run_2026": 23.01,
+    "longest_run_2026": 30.04,
     "fastest_5k_pace": "4:50/km",
     "fastest_10k_pace": "5:06/km",
     "recent_interval_pace": "4x 1.5k @ 5:04/km (final 4:55/km)",
     "recent_tempo_pace": "10k MP Block @ 5:21/km (HR 154 bpm, 13.82k total @ 5:29/km)",
     "recent_aerobic_flush": "6.68 km @ 6:03/km (Zone 2 Flush, HR 141 bpm)",
-    "recent_long_run": "22.04 km @ 5:55/km (Final 2k @ 5:26/km, 28°C Heat)",
+    "recent_long_run": "30.04 km @ 5:49/km (Peak Simulation: 22k Easy + 8k MP @ 5:31/km in 27°C Heat)",
     "target_marathon_pace": "5:34 - 5:38/km",
     "target_time": "3:55:00 - 3:58:00 (< 4h)",
     "race_date": "2026-10-11",
     "race_name": "Generali München Marathon 2026",
-    "days_to_race": 16
+    "days_to_race": 14
   },
   "activities": [
     {
@@ -1336,6 +1336,21 @@
       "cadence": 160,
       "elevation_m": 16,
       "calories": 543
+    },
+    {
+      "id": "480635810056536365",
+      "date": "2026-09-27",
+      "datetime": "2026-09-27 10:13",
+      "timestamp": 1790506411,
+      "distance_km": 30.04,
+      "duration_min": 175.0,
+      "pace_str": "5:49/km",
+      "pace_min_km": 5.83,
+      "avg_hr": 155,
+      "max_hr": 168,
+      "cadence": 164,
+      "elevation_m": 118,
+      "calories": 2698
     }
   ],
   "cross_training": [
@@ -1567,10 +1582,10 @@
     },
     {
       "month": "2026-09",
-      "total_km": 128.4,
-      "runs": 10,
-      "avg_hr": 151.6,
-      "avg_pace": 5.7
+      "total_km": 158.4,
+      "runs": 11,
+      "avg_hr": 151.9,
+      "avg_pace": 5.74
     }
   ]
 }
