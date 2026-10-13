@@ -2,7 +2,7 @@
   "kpis": {
     "total_runs": 92,
     "total_running_km": 889.6,
-    "longest_run_all_time": 42.51,
+    "longest_run_all_time": 42.54,
     "longest_run_2026": 42.54,
     "fastest_5k_pace": "4:50/km",
     "fastest_10k_pace": "5:06/km",
@@ -14,7 +14,7 @@
     "target_time": "3:55:00 - 3:58:00 (< 4h)",
     "race_date": "2026-10-11",
     "race_name": "Generali München Marathon 2026",
-    "days_to_race": -2
+    "days_to_race": 0
   },
   "activities": [
     {
